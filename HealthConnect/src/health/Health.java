@@ -26,18 +26,18 @@ public static void main(String[] args) {
     //test connection
             Connection conn = null;
     try {
-        Class.forName("org.sqlite.JDBC");
-        conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+        Class.forName("com.mysql.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
         //JOptionPane.showMessageDialog (null, "Connected");
         Statement statement = conn.createStatement();
-        ResultSet hc = statement.executeQuery("select * from Patient");
+        ResultSet hc = statement.executeQuery("select * from healthconnect.Patient");
 
         while (hc.next()){
             System.out.println("Username = " + hc.getString("Username"));
             System.out.println("Password = " + hc.getString("Password"));
         }
 
-        hc = statement.executeQuery("select * from Doctor");
+        hc = statement.executeQuery("select * from healthconnect.Doctor");
 
         while (hc.next()){
             System.out.println("Username = " + hc.getString("Username"));

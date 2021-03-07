@@ -32,8 +32,8 @@ public final class DoctorView extends javax.swing.JFrame {
     public DoctorView(String doctor) {
         initComponents();
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
             //JOptionPane.showMessageDialog (null, "Connected");
             Statement statement = conn.createStatement();
         }
@@ -225,7 +225,8 @@ public final class DoctorView extends javax.swing.JFrame {
         viewedRequests.setText("New Requests");
         requestsList.setVisible(true);
         String element;
-        String sql ="select * from Request where Status=?";
+        String sql ="select * from healthconnect.request where Status=?";
+        //String sql = "select * from r"
         model.removeAllElements();
         element = "RID        Date                                        Patient Username";
         model.addElement(element);
@@ -266,7 +267,7 @@ public final class DoctorView extends javax.swing.JFrame {
         viewedRequests.setText("In Progress Requests");
         requestsList.setVisible(true);
         String element;
-        String sql ="select distinct Request.RID, Date, PUsername from Request, Message where Request.RID = Message.RID and Request.Status=? and Message.DUsername=?";
+        String sql ="select distinct Request.RID, Date, PUsername from healthconnect.Request, healthconnect.Message where Request.RID = Message.RID and Request.Status=? and Message.DUsername=?";
         model.removeAllElements();
         element = "RID        Date                                        Patient Username";
         model.addElement(element);
@@ -331,7 +332,7 @@ public final class DoctorView extends javax.swing.JFrame {
         viewedRequests.setText("Closed Requests");
         requestsList.setVisible(true);
         String element;
-        String sql ="select Distinct Request.RID, Date, PUsername from Request, Message where Request.RID = Message.RID and Request.Status=? and Message.DUsername=?";
+        String sql ="select Distinct Request.RID, Date, PUsername from healthconnect.Request, healthconnect.Message where Request.RID = Message.RID and Request.Status=? and Message.DUsername=?";
         model.removeAllElements();
         element = "RID        Date                                        Patient Username";
         model.addElement(element);

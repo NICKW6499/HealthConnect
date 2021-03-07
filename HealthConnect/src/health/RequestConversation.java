@@ -37,15 +37,16 @@ public class RequestConversation extends javax.swing.JFrame {
         userID = new_userID;
         userType = new_userType;
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
             //JOptionPane.showMessageDialog (null, "Connected");
             Statement statement = conn.createStatement();
         }
         catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
-        String sql ="select * from Message where RID=?";
+        String sql ="select * from healthconnect.Message where RID=?";
+
         try{
             pst=conn.prepareStatement(sql);
             String temp = Integer.toString(requestNumber);
@@ -72,10 +73,10 @@ public class RequestConversation extends javax.swing.JFrame {
             }
             if("Doctor".equals(userType))
             {
-                sql = "update Message set DUsername=? where RID =?";
+                sql = "update healthconnect.message set DUsername=? where RID =?";
                 pst=conn.prepareStatement(sql);
                 pst.setString(1, userID);
-                pst.setString(2, temp);
+
                 pst.execute();
             }
 
@@ -92,7 +93,7 @@ public class RequestConversation extends javax.swing.JFrame {
             }
         }
 
-        sql = "select Status from Request where RID =?";
+        sql = "select Status from healthconnect.Request where RID =?";
         try{
             pst=conn.prepareStatement(sql);
             String temp = Integer.toString(requestNumber);
@@ -228,7 +229,7 @@ public class RequestConversation extends javax.swing.JFrame {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to add your message to the request?", "Add To Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
-            String sql ="insert into Message (RID, DUsername, TimeStamp, Message) values (?, ?, ?, ?)";
+            String sql ="insert into healthconnect.Message (RID, DUsername, TimeStamp, Message) values (?, ?, ?, ?)";
 
             try{
                 pst=conn.prepareStatement(sql);
@@ -246,7 +247,7 @@ public class RequestConversation extends javax.swing.JFrame {
                 pst.setString(4, finalString);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Message added");
-                sql = "update Request set Status='In Progress' where RID =?";
+                sql = "update healthconnect.Request set Status='In Progress' where RID =?";
                 pst=conn.prepareStatement(sql);
                 temp = Integer.toString(requestNumber);
                 pst.setString(1, temp);
@@ -256,7 +257,7 @@ public class RequestConversation extends javax.swing.JFrame {
                 currentRequest.append("\n");
                 currentRequest.append(finalString);
                 addToRequest.setText("");
-                sql = "update Message set DUsername=? where RID =?";
+                sql = "update healthconnect.Message set DUsername=? where RID =?";
                 pst=conn.prepareStatement(sql);
                 pst.setString(1, userID);
                 pst.setString(2, temp);
@@ -281,7 +282,7 @@ public class RequestConversation extends javax.swing.JFrame {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the request?", "Close Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
-            String sql = "update Request set Status='Closed' where RID =?";
+            String sql = "update healthconnect.Request set Status='Closed' where RID =?";
             try{
                 pst=conn.prepareStatement(sql);
                 String temp = Integer.toString(requestNumber);

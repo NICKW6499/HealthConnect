@@ -32,8 +32,8 @@ public final class PatientView extends javax.swing.JFrame {
     public PatientView(String patient) {
         initComponents();
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
             //JOptionPane.showMessageDialog (null, "Connected");
             Statement statement = conn.createStatement();
         }
@@ -205,7 +205,7 @@ public final class PatientView extends javax.swing.JFrame {
         jLabel1.setText("Your Opened Requests");
         jList1.setVisible(true);
         String element;
-        String sql ="select RID,Date from Request where Status=? and PUsername=?";
+        String sql ="select RID,Date from healthconnect.Request where Status=? and PUsername=?";
         model.removeAllElements();
         element = "RID        Date";
         model.addElement(element);
@@ -247,7 +247,7 @@ public final class PatientView extends javax.swing.JFrame {
         jLabel1.setText("Your New Requests");
         jList1.setVisible(true);
         String element;
-        String sql ="select RID,Date from Request where Status=? and PUsername=?";
+        String sql ="select RID,Date from healthconnect.Request where Status=? and PUsername=?";
         model.removeAllElements();
         element = "RID        Date";
         model.addElement(element);
@@ -289,7 +289,7 @@ public final class PatientView extends javax.swing.JFrame {
         jLabel1.setText("Your Closed Requests");
         jList1.setVisible(true);
         String element;
-        String sql ="select RID,Date from Request where Status=? and PUsername=?";
+        String sql ="select RID,Date from healthconnect.Request where Status=? and PUsername=?";
         model.removeAllElements();
         element = "RID        Date";
         model.addElement(element);

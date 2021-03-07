@@ -34,11 +34,11 @@ public class NewRequests extends javax.swing.JFrame {
         initComponents();
         userID = new_userID;
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
             //JOptionPane.showMessageDialog (null, "Connected");
             Statement statement = conn.createStatement();
-            String sql ="select RID from Request";
+            String sql ="select RID from healthconnect.Request";
             rs = statement.executeQuery(sql);
             while(rs.next())
                 count++;
@@ -170,7 +170,7 @@ public class NewRequests extends javax.swing.JFrame {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to create the request?", "Create Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
-            String sql ="insert into Message (RID, DUsername, TimeStamp, Message) values (?, ?, ?, ?)";
+            String sql ="insert into healthconnect.Message (RID, DUsername, TimeStamp, Message) values (?, ?, ?, ?)";
 
             try{
                 pst=conn.prepareStatement(sql);
@@ -188,7 +188,7 @@ public class NewRequests extends javax.swing.JFrame {
                 pst.setString(4, finalString);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Message created");
-                sql = "insert into Request (RID, PUsername, Date, Status) values (?, ?, ?, ?)";
+                sql = "insert into healthconnect.Request (RID, PUsername, Date, Status) values (?, ?, ?, ?)";
                 pst=conn.prepareStatement(sql);
                 pst.setString(1, temp);
                 pst.setString(2, userID);

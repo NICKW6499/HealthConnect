@@ -27,8 +27,8 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
         try {
-            Class.forName("org.sqlite.JDBC");
-            conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Andrea\\Documents\\NetBeansProjects\\health.sqlite");
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/healthconnect", "root", "");
             //JOptionPane.showMessageDialog (null, "Connected");
             Statement statement = conn.createStatement();
         }
@@ -171,7 +171,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void LoginAsPatientActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String sql ="select * from Patient where username=? and password=?";
+        String sql ="select * from healthconnect.Patient where username=? and password=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, txt_username.getText());
@@ -210,7 +210,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     private void LoginAsDoctorActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String sql ="select * from Doctor where username=? and password=?";
+        String sql ="select * from healthconnect.Doctor where username=? and password=?";
         try{
             pst=conn.prepareStatement(sql);
             pst.setString(1, txt_username.getText());
