@@ -387,11 +387,17 @@ public final class DoctorView extends javax.swing.JFrame {
         catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
-        int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
-        if(pane==0){
-            dispose();
-            NewJFrame n = new NewJFrame();
-            n.setVisible(true);}
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, e);
+
+        }finally {
+            int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
+            if(pane==0){
+                dispose();
+                NewJFrame n = new NewJFrame();
+                n.setVisible(true);}
+        }
+
     }
 
     /**
