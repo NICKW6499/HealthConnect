@@ -57,7 +57,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    public void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         txt_username = new javax.swing.JTextField();
@@ -169,7 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void LoginAsPatientActionPerformed(java.awt.event.ActionEvent evt) {
+    public void LoginAsPatientActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String sql ="select * from healthconnect.Patient where username=? and password=?";
         try{
@@ -208,7 +208,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
 
     }
-    private void LoginAsDoctorActionPerformed(java.awt.event.ActionEvent evt) {
+    public void LoginAsDoctorActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String sql ="select * from healthconnect.Doctor where username=? and password=?";
         try{
@@ -246,11 +246,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     }
 
-    private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {
+    public void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
-    private void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {
+    public void txt_passwordActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }
 
@@ -286,14 +286,14 @@ public static void main(String args[]) {
 }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton LoginAsDoctor;
-    private javax.swing.JButton LoginAsPatient;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPasswordField txt_password;
-    public javax.swing.JTextField txt_username;
+    public static javax.swing.JButton LoginAsDoctor;
+    public static javax.swing.JButton LoginAsPatient;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel2;
+    public static javax.swing.JLabel jLabel3;
+    public static javax.swing.JLabel jLabel4;
+    public static javax.swing.JSeparator jSeparator1;
+    public static javax.swing.JPasswordField txt_password;
+    public static javax.swing.JTextField txt_username;
     // End of variables declaration
 }

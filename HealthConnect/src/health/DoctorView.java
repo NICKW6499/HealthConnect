@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 public final class DoctorView extends javax.swing.JFrame {
     Connection conn=null;
-    ResultSet rs=null;
+    ResultSet rs;
     PreparedStatement pst=null;
     int curRow=0;
     String username, userType;
@@ -98,7 +98,7 @@ public final class DoctorView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         requestsList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = {};
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -220,7 +220,7 @@ public final class DoctorView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void newRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public void newRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         viewedRequests.setText("New Requests");
         requestsList.setVisible(true);
@@ -262,7 +262,7 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
-    private void inProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public void inProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         viewedRequests.setText("In Progress Requests");
         requestsList.setVisible(true);
@@ -289,6 +289,7 @@ public final class DoctorView extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(null, "No requests are in progress");
 
+
             }
         }
 
@@ -304,17 +305,20 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
-    private void openSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public void openSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String test = Integer.toString(requestsList.getSelectedIndex());
         if(requestsList.getSelectedIndex() != -1)
         {
             String temp_requestID = requestsList.getSelectedValue().toString();
             temp_requestID = temp_requestID.substring(0,3);
             requestID = Integer.parseInt(temp_requestID);
             setRequestID(requestID);
+
             try{
-                rs.close();
-                pst.close();
+                    rs.close();
+                    pst.close();
+
             }
             catch(SQLException e){
                 JOptionPane.showMessageDialog(null, e);
@@ -327,7 +331,7 @@ public final class DoctorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select a request");
     }
 
-    private void closeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public void closeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         viewedRequests.setText("Closed Requests");
         requestsList.setVisible(true);
@@ -369,7 +373,7 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
-    private void requestsListValueChanged(javax.swing.event.ListSelectionEvent evt) {
+    public void requestsListValueChanged(javax.swing.event.ListSelectionEvent evt) {
         // TODO add your handling code here:
         if (requestsList.getSelectedIndex() == -1){
             //Nothing was selected.  Do nothing
@@ -378,17 +382,19 @@ public final class DoctorView extends javax.swing.JFrame {
             index = requestsList.getSelectedIndex();
     }
 
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {
+    public void logoutActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try{
-            rs.close();
-            pst.close();
+
+                rs.close();
+                pst.close();
+
         }
         catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
         catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "All connections closed");
 
         }finally {
             int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
@@ -431,17 +437,17 @@ public final class DoctorView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton closeRequestButton;
-    private javax.swing.JButton inProgressButton;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton logout;
-    private javax.swing.JButton newRequestButton;
-    private javax.swing.JButton openSelectedButton;
-    private javax.swing.JList requestsList;
-    private javax.swing.JLabel viewedRequests;
-    private javax.swing.JLabel welcome;
+    public static javax.swing.JButton closeRequestButton;
+    public static javax.swing.JButton inProgressButton;
+    public static javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel6;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JSeparator jSeparator1;
+    public static javax.swing.JButton logout;
+    public static javax.swing.JButton newRequestButton;
+    public static javax.swing.JButton openSelectedButton;
+    public static javax.swing.JList requestsList;
+    public static javax.swing.JLabel viewedRequests;
+    public static javax.swing.JLabel welcome;
     // End of variables declaration
 }

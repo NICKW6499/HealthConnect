@@ -68,7 +68,7 @@ public class NewRequests extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    public  void initComponents() {
 
         jLabel6 = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
@@ -166,7 +166,7 @@ public class NewRequests extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void createButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to create the request?", "Create Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
@@ -213,7 +213,7 @@ public class NewRequests extends javax.swing.JFrame {
         }
     }
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Profile p = new Profile(userID);
         p.setVisible(true);
@@ -252,14 +252,14 @@ public class NewRequests extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton CancelButton;
-    private javax.swing.JLabel PatientID;
-    private javax.swing.JLabel RequestID;
-    private javax.swing.JLabel Title;
-    private javax.swing.JButton createButton;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JButton CancelButton;
+    public static javax.swing.JLabel PatientID;
+    public static javax.swing.JLabel RequestID;
+    public static javax.swing.JLabel Title;
+    public static javax.swing.JButton createButton;
+    public static javax.swing.JLabel jLabel6;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JTextArea jTextArea1;
     // End of variables declaration
 }

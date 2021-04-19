@@ -40,7 +40,7 @@ public class Profile extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    public  void initComponents() {
 
         jLabel4 = new javax.swing.JLabel();
         welcome = new javax.swing.JLabel();
@@ -123,21 +123,21 @@ public class Profile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void makeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void makeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         dispose();
         NewRequests n = new NewRequests(username);
         n.setVisible(true);
     }
 
-    private void viewRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void viewRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         dispose();
         PatientView p = new PatientView(username);
         p.setVisible(true);
     }
 
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void logoutActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
         if(pane==0){
@@ -177,11 +177,11 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JButton logout;
-    private javax.swing.JButton makeRequestButton;
-    private javax.swing.JButton viewRequestButton;
-    private javax.swing.JLabel welcome;
+    public static javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
+    public static javax.swing.JButton logout;
+    public static javax.swing.JButton makeRequestButton;
+    public static javax.swing.JButton viewRequestButton;
+    public static javax.swing.JLabel welcome;
     // End of variables declaration
 }
