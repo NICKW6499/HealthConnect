@@ -13,7 +13,10 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+/**
+ * Class: Health.java
+ * Purpose: Allows a user to login into the software.
+ */
 public class Health {
 
 /**
