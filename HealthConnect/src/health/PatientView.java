@@ -380,15 +380,15 @@ public final class PatientView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton InProgressButton;
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton closedButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JList jList1;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton newButton;
-    private javax.swing.JButton openRequest;
+    public static javax.swing.JButton InProgressButton;
+    public static javax.swing.JButton backButton;
+    public static javax.swing.JButton closedButton;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JList jList1;
+    public static javax.swing.JScrollBar jScrollBar1;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JButton newButton;
+    public static javax.swing.JButton openRequest;
     // End of variables declaration
 }

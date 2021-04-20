@@ -33,6 +33,8 @@ public class RequestConversation extends javax.swing.JFrame {
      */
     public RequestConversation(int new_requestID, String new_userID, String new_userType) {
         initComponents();
+        currentRequest.setEditable(false);
+        int index = 2;
         requestNumber = new_requestID;
         userID = new_userID;
         userType = new_userType;
@@ -76,7 +78,7 @@ public class RequestConversation extends javax.swing.JFrame {
                 sql = "update healthconnect.message set DUsername=? where RID =?";
                 pst=conn.prepareStatement(sql);
                 pst.setString(1, userID);
-
+                pst.setInt(index,requestNumber);
                 pst.execute();
             }
 
@@ -99,6 +101,8 @@ public class RequestConversation extends javax.swing.JFrame {
             String temp = Integer.toString(requestNumber);
             pst.setString(1, temp);
             rs = pst.executeQuery();
+
+            if(rs.next())
             if("Closed".equals(rs.getString("Status")))
             {
                 closeButton.setEnabled(false);
@@ -125,7 +129,7 @@ public class RequestConversation extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    public  void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         currentRequest = new javax.swing.JTextArea();
@@ -225,7 +229,7 @@ public class RequestConversation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to add your message to the request?", "Add To Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
@@ -278,7 +282,7 @@ public class RequestConversation extends javax.swing.JFrame {
 
     }
 
-    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the request?", "Close Request", JOptionPane.YES_NO_OPTION);
         if(pane==0){
@@ -319,7 +323,7 @@ public class RequestConversation extends javax.swing.JFrame {
         }
     }
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    public  void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try{
             rs.close();
@@ -376,14 +380,14 @@ public class RequestConversation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JButton addButton;
-    private javax.swing.JTextArea addToRequest;
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton closeButton;
-    private javax.swing.JTextArea currentRequest;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JButton addButton;
+    public static javax.swing.JTextArea addToRequest;
+    public static javax.swing.JButton backButton;
+    public static javax.swing.JButton closeButton;
+    public  javax.swing.JTextArea currentRequest;
+    public static javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration
 }
