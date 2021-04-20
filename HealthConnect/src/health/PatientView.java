@@ -16,15 +16,20 @@ import java.sql.Statement;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * Class: PatientView.java
+ * Purpose: This is the view that a Patient views once logged into the system.
+ * allows the patient to view, cancel, and view requests in progress.
+ */
 public final class PatientView extends javax.swing.JFrame {
-    Connection conn=null;
+    Connection conn=null; //database connection
     ResultSet rs=null;
     PreparedStatement pst=null;
     int curRow=0;
-    String username, userType;
+    String username, userType; //username and userType variables
     DefaultListModel model = new DefaultListModel();
     int index;
-    int requestID;
+    int requestID; //ID of request
     /**
      * Creates new form PatientView
      * @param patient
@@ -48,6 +53,10 @@ public final class PatientView extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Set & get methods for Username, RequestID, UserType
+     * @return
+     */
     public String getUsername(){
         return this.username;
     }
@@ -200,6 +209,10 @@ public final class PatientView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    /**
+     * Method that allows a patient to view their requests and the status of the requests.
+     * @param evt - event
+     */
     private void InProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jLabel1.setText("Your Opened Requests");
@@ -242,6 +255,10 @@ public final class PatientView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that allows a patient to make a request
+     * @param evt - event
+     */
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jLabel1.setText("Your New Requests");
@@ -284,6 +301,10 @@ public final class PatientView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that allows a patient user to view closed requests.
+     * @param evt - event
+     */
     private void closedButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jLabel1.setText("Your Closed Requests");
@@ -326,6 +347,10 @@ public final class PatientView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that allows the user to click the back button and go back to previous screen.
+     * @param evt - event
+     */
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         dispose();
@@ -333,6 +358,10 @@ public final class PatientView extends javax.swing.JFrame {
         p.setVisible(true);
     }
 
+    /**
+     * Method that allows user to open a request by selecting it.
+     * @param evt - event
+     */
     private void openRequestActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(jList1.getSelectedIndex() != -1)
