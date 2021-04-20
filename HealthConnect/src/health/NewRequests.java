@@ -17,17 +17,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+/**
+ * Class: NewRequests.java
+ * Purpose: Allows a patient to make a request to a Doctor.
+ */
 public class NewRequests extends javax.swing.JFrame {
-    int requestNumber;
-    String userID;
-    String userType;
-    Connection conn=null;
+    int requestNumber; //request number
+    String userID; //userID
+    String userType; //usertype - Doctor or Patient
+    Connection conn=null; //database connection
     ResultSet rs=null;
     PreparedStatement pst=null;
     int count = 100;
 
     /**
      * Creates new form NewRequests
+     * Allows a user to make a request
      * @param new_userID
      */
     public NewRequests(String new_userID) {
@@ -213,6 +218,10 @@ public class NewRequests extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Allows the user to cancel creating a request by using the button.
+     * @param evt event
+     */
     public  void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Profile p = new Profile(userID);
