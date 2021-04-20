@@ -15,8 +15,13 @@ import java.sql.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+/**
+ * Class: NewJFrame.java
+ * Purpose: Allows the user to login either as a Doctor or a Patient.
+ * Database checks if credentials are correct.
+ */
 public class NewJFrame extends javax.swing.JFrame {
-    Connection conn=null;
+    Connection conn=null; //database connection
     ResultSet rs=null;
     PreparedStatement pst=null;
     int curRow=0;
@@ -42,10 +47,16 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
 
+    /*
+    Get username
+     */
     public String getUsername(){
         return this.username;
     }
 
+    /*
+    set username
+     */
     public void setUsername(String username){
         this.username = this.txt_username.getText();
     }

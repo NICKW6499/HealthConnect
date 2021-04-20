@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package health;
 
@@ -16,18 +12,27 @@ import java.sql.Statement;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
+/**
+ * Class: DoctorView.java
+ * Purpose: This class gives functionality to the DoctorView page in the project.
+ * Will allow doctors to select a request to view, view requests in progress,
+ * close requests, and change information about requests.
+ * Will also allow a doctor to sign out.
+ */
+
 public final class DoctorView extends javax.swing.JFrame {
-    Connection conn=null;
+    Connection conn=null; //conection to database
     ResultSet rs;
-    PreparedStatement pst=null;
+    PreparedStatement pst=null; //prepared statement mysql
     int curRow=0;
-    String username, userType;
+    String username, userType; //username and userType variable
     DefaultListModel model = new DefaultListModel();
-    int index;
-    int requestID;
+    int index; //index
+    int requestID; //requestID of request
+
     /**
      * Creates new form DoctorView
-     * @param doctor
+     * @param doctor - doctor's name
      */
     public DoctorView(String doctor) {
         initComponents();
@@ -45,6 +50,11 @@ public final class DoctorView extends javax.swing.JFrame {
         welcome.setText("Welcome Back, " + username + "!");
         requestsList.setVisible(false);
     }
+
+    /**
+     * Get and set methods for Username, RequestID, UserType
+     */
+
     public String getUsername(){
         return this.username;
     }
@@ -262,6 +272,10 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that shows Requests in Progress
+     * @param evt - event
+     */
     public void inProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         viewedRequests.setText("In Progress Requests");
@@ -305,6 +319,10 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that opens a selected request
+     * @param evt - event
+     */
     public void openSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         String test = Integer.toString(requestsList.getSelectedIndex());
@@ -331,6 +349,10 @@ public final class DoctorView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please select a request");
     }
 
+    /**
+     * Method that allows a doctor to close a request that has been fullfilled.
+     * @param evt
+     */
     public void closeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         viewedRequests.setText("Closed Requests");
@@ -373,6 +395,10 @@ public final class DoctorView extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Method that allows a doctor to change a value in a Request.
+     * @param evt - event
+     */
     public void requestsListValueChanged(javax.swing.event.ListSelectionEvent evt) {
         // TODO add your handling code here:
         if (requestsList.getSelectedIndex() == -1){
@@ -382,6 +408,10 @@ public final class DoctorView extends javax.swing.JFrame {
             index = requestsList.getSelectedIndex();
     }
 
+    /**
+     * Method that allows a doctor to log out of the program
+     * @param evt event
+     */
     public void logoutActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try{
