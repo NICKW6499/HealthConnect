@@ -189,6 +189,14 @@ class PatientViewTest {
     }
 
     @Test
+    @DisplayName("input validation Doctor")
+    public void passwordWrong(){
+        NewJFrame.txt_username.setText("bob");
+        NewJFrame.txt_password.setText("bob");
+        NewJFrame.LoginAsPatient.doClick();
+    }
+
+    @Test
     @After
     void newRequestForTesting(){
         NewJFrame.txt_username.setText("nick");
