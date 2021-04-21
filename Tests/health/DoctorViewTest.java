@@ -231,6 +231,21 @@ class DoctorViewTest {
     }
 
     @Test
+    @DisplayName("input validation Doctor")
+    public void passwordWrong(){
+        NewJFrame.txt_username.setText("bob");
+        NewJFrame.txt_password.setText("bob");
+        NewJFrame.LoginAsDoctor.doClick();
+    }
+    @Test
+    @DisplayName("input validation Doctor")
+    public void passwordWrongHealth(){
+        NewJFrame.txt_username.setText("bob");
+        NewJFrame.txt_password.setText("bob");
+        NewJFrame.LoginAsDoctor.doClick();
+    }
+
+    @Test
     @After
     void newInProgress(){
         NewJFrame.txt_username.setText("nick");
