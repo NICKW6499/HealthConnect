@@ -13,12 +13,16 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.sql.ResultSet;
 
+/**
+ * Class: Profile.java
+ * Purpose: Allows the user to view their profile depending on their userType.
+ */
 public class Profile extends javax.swing.JFrame {
-    Connection conn=null;
+    Connection conn=null; //database connection
     ResultSet rs=null;
     PreparedStatement pst=null;
     int curRow=0;
-    String username;
+    String username; //username is the user's name
     /**
      * Creates new form Profile
      * @param patient
@@ -123,6 +127,10 @@ public class Profile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    /**
+     * method that adds functionality to the make a request button
+     * @param evt
+     */
     public  void makeRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         dispose();
@@ -130,6 +138,10 @@ public class Profile extends javax.swing.JFrame {
         n.setVisible(true);
     }
 
+    /**
+     * method that ads functionality to the view request button
+     * @param evt
+     */
     public  void viewRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         dispose();
@@ -137,6 +149,11 @@ public class Profile extends javax.swing.JFrame {
         p.setVisible(true);
     }
 
+    /**
+     * method that adds functionality to the logout button
+     * allows user to log out of the program
+     * @param evt
+     */
     public  void logoutActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
