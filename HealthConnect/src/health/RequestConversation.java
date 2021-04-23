@@ -17,6 +17,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
+/**
+ * The RequestConversation class extends the javax.swing.JFrame class. The purpose of this class is to be able
+ * to retrieve the requests that are present in the data base. This class also allows for request to be submited and
+ * modified in the database.
+ */
+
 public class RequestConversation extends javax.swing.JFrame {
     int requestNumber;
     String userID;
@@ -33,6 +39,7 @@ public class RequestConversation extends javax.swing.JFrame {
      */
     public RequestConversation(int new_requestID, String new_userID, String new_userType) {
         initComponents();
+        // Sets the currentRequest text area to not be editable.
         currentRequest.setEditable(false);
         int index = 2;
         requestNumber = new_requestID;
@@ -229,6 +236,10 @@ public class RequestConversation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    /**
+     * This function takes an action event as a parameter and the function submits a patient request.
+     * @param evt
+     */
     public  void addButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to add your message to the request?", "Add To Request", JOptionPane.YES_NO_OPTION);
@@ -282,6 +293,10 @@ public class RequestConversation extends javax.swing.JFrame {
 
     }
 
+    /**
+     * This function takes in an action event and allows a doctor to close a request.
+     * @param evt
+     */
     public  void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         int pane = JOptionPane.showConfirmDialog(null, "Are you sure you want to close the request?", "Close Request", JOptionPane.YES_NO_OPTION);
@@ -323,6 +338,10 @@ public class RequestConversation extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * This function takes in an action event and allows the end user to go back to the previous screen.
+     * @param evt
+     */
     public  void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         try{
