@@ -213,7 +213,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 pst.close();
             }
             catch(SQLException e){
-                JOptionPane.showMessageDialog(null, e);
+                JOptionPane.showMessageDialog(null, "Connections closed");
             }
         }
 

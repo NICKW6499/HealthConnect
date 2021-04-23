@@ -10,7 +10,7 @@ import javax.print.Doc;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DoctorViewTest {
+class DoctorUnitTests {
     DoctorView view = new DoctorView("nick");
     PatientView pView = new PatientView("nick");
     Health health;

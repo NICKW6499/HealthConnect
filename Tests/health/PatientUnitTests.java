@@ -10,7 +10,7 @@ import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PatientViewTest {
+class PatientUnitTests {
     DoctorView view= new DoctorView("nick");
     PatientView pView= new PatientView("nick");
     Health health;
@@ -208,5 +208,7 @@ class PatientViewTest {
         Profile.logout.doClick();
 
     }
+
+
 
 }
